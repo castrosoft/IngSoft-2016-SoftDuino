@@ -1,5 +1,7 @@
 package main.java.djview;
-  
+
+
+
 public class HeartController implements ControllerInterface {
 	HeartModelInterface model;
 	DJView view;
@@ -17,7 +19,9 @@ public class HeartController implements ControllerInterface {
  
 	public void stop() {}
     
-	public void increaseBPM() {}
+	public void increaseBPM() {
+		HeartModel heartModel = HeartModel.getInstance();
+	}
     
 	public void decreaseBPM() {}
   
