@@ -2,6 +2,8 @@ package main.java.djview;
 
 import java.util.*;
 
+
+
 public class HeartModel implements HeartModelInterface, Runnable {
 	ArrayList beatObservers = new ArrayList();
 	ArrayList bpmObservers = new ArrayList();
@@ -9,10 +11,29 @@ public class HeartModel implements HeartModelInterface, Runnable {
     int bpm = 90;
 	Random random = new Random(System.currentTimeMillis());
 	Thread thread;
-
-	public HeartModel() {
+	
+	private HeartModel() {
 		thread = new Thread(this);
 		thread.start();
+	}
+	
+	private static HeartModel uniqueInstance = null;
+	private static int cantidad = 0;
+	
+	public static HeartModel getInstance() {
+		if (uniqueInstance == null) {
+			synchronized (HeartModel.class){
+				if (uniqueInstance == null) {
+					uniqueInstance = new HeartModel();
+				}
+			}
+		}
+		cantidad++;
+		return uniqueInstance;
+	}
+
+	public int getCantidad() {
+		return cantidad;
 	}
 
 	public void run() {
