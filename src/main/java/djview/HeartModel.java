@@ -48,10 +48,11 @@ public class HeartModel implements HeartModelInterface, Runnable {
 			if (rate < 120 && rate > 50) {
 				time += change;
 				notifyBeatObservers();
-				if (rate != lastrate) {
+				notifyBPMObservers(); //ahora con cada cambio se actualizan los intentos
+				/*if (rate != lastrate) {		Esto generaba el delay
 					lastrate = rate;
 					notifyBPMObservers();
-				}
+				}*/
 			}
 			try {
 				Thread.sleep(time);
