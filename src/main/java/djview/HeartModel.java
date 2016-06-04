@@ -16,7 +16,7 @@ public class HeartModel implements HeartModelInterface, Runnable {
 		thread = new Thread(this);
 		thread.start();
 	}
-	
+	//variable para singleton
 	private static HeartModel uniqueInstance = null;
 	private static int cantidad = 0;
 	
