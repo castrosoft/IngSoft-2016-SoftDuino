@@ -7,7 +7,7 @@ public class DosifierController implements ControllerInterface {
 	
 	public DosifierController(DosifierModelInterface model) {
 		this.model = model;
-		view = new DJView(this, model);
+		view = new DJView(this, new DosifierAdapter(model));
         view.createView();
         view.createControls();
 		view.disableStopMenuItem();
