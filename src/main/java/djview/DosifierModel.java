@@ -1,6 +1,8 @@
 package main.java.djview;
 
+import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
+
 import java.util.ArrayList;
 
 public class DosifierModel implements DosifierModelInterface, SerialPortEventListener {
@@ -51,6 +53,12 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 			BPMObserver observer = (BPMObserver)bpmObservers.get(i);
 			observer.updateBPM();
 		}
+	}
+
+	@Override
+	public void serialEvent(SerialPortEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

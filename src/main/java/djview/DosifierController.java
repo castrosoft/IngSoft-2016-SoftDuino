@@ -2,43 +2,43 @@ package main.java.djview;
 
 public class DosifierController implements ControllerInterface {
 	
-	DosifierModelInterface model;
+	DosifierAdapter adapter;
 	DJView view;
 	
 	public DosifierController(DosifierModelInterface model) {
-		this.model = model;
-		view = new DJView(this, new DosifierAdapter(model));
+		adapter = new DosifierAdapter(model);
+		view = new DJView(this, adapter);
         view.createView();
         view.createControls();
 		view.disableStopMenuItem();
 		view.enableStartMenuItem();
-		model.initialize();
+		adapter.initialize();
 	}
   
 	public void start() {
-		model.on();
+		adapter.on();
 		view.disableStartMenuItem();
 		view.enableStopMenuItem();
 	}
   
 	public void stop() {
-		model.off();
+		adapter.off();
 		view.disableStopMenuItem();
 		view.enableStartMenuItem();
 	}
     
 	public void increaseBPM() {
-        int bpm = model.getBPM();
-        model.setBPM(bpm + 1);
+        int bpm = adapter.getBPM();
+        adapter.setBPM(bpm + 1);
 	}
     
 	public void decreaseBPM() {
-        int bpm = model.getBPM();
-        model.setBPM(bpm - 1);
+        int bpm = adapter.getBPM();
+        adapter.setBPM(bpm - 1);
   	}
   
  	public void setBPM(int bpm) {
-		model.setBPM(bpm);
+		adapter.setBPM(bpm);
 	}
 	
 	

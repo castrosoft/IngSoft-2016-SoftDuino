@@ -1,38 +1,42 @@
 package main.java.djview;
 
-public class DosifierAdapter {
+public class DosifierAdapter implements BeatModelInterface{
 
-	HeartModelInterface heart;
+	DosifierModelInterface dosifier;
 	 
-	public DosifierAdapter(HeartModelInterface heart) {
-		this.heart = heart;
+	public DosifierAdapter(DosifierModelInterface dosifier) {
+		this.dosifier = dosifier;
 	}
 
-    public void initialize() {}
+    public void initialize() {
+    	
+    }
   
     public void on() {}
   
     public void off() {}
    
 	public int getBPM() {
-		return heart.getHeartRate();
+		return dosifier.getState();
 	}
   
-    public void setBPM(int bpm) {}
+    public void setBPM(int bpm) {
+    	dosifier.setQuantity(bpm);
+    }
    
 	public void registerObserver(BeatObserver o) {
-		heart.registerObserver(o);
+		dosifier.registerObserver(o);
 	}
     
 	public void removeObserver(BeatObserver o) {
-		heart.removeObserver(o);
+		dosifier.removeObserver(o);
 	}
      
 	public void registerObserver(BPMObserver o) {
-		heart.registerObserver(o);
+		dosifier.registerObserver(o);
 	}
   
 	public void removeObserver(BPMObserver o) {
-		heart.removeObserver(o);
+		dosifier.removeObserver(o);
 	}
 }
