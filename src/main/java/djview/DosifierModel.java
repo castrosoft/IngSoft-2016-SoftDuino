@@ -1,23 +1,89 @@
 package main.java.djview;
 
-import gnu.io.SerialPortEvent;
-import gnu.io.SerialPortEventListener;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import gnu.io.CommPortIdentifier; 
+import gnu.io.SerialPort;
+import gnu.io.SerialPortEvent; 
+import gnu.io.SerialPortEventListener; 
+import java.util.Enumeration;
 
 import java.util.ArrayList;
 
 public class DosifierModel implements DosifierModelInterface, SerialPortEventListener {
 	
+	SerialPort serialPort;
+	private static final String PORT_NAMES[] = {"COM3"};
+	private BufferedReader input;
+	private OutputStream output;
+	private static final int TIME_OUT=2000;
+	private static final int DATA_RATE=9600;
+	
 	ArrayList beatObservers = new ArrayList();
 	ArrayList bpmObservers = new ArrayList();
-	private int cantidad;
+	private int estado;
 	
 	public int getState() {
-		return cantidad;
+		return estado;
 	}
 	
 	public void setQuantity(int cant){
+		enviarDatos(cant);
+	}
+	
+	public void abrirConexion(){
+		System.setProperty("gnu.io.rxtx.SerialPorts", "COM3");
+		
+		CommPortIdentifier portId = null;
+		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
+		
+		while(portEnum.hasMoreElements()){
+			CommPortIdentifier currPortId = (CommPortIdentifier) portEnum.nextElement();
+			for(String portName : PORT_NAMES){
+				if(currPortId.getName().equals(portName)){
+					portId = currPortId;
+					break;
+				}
+			}
+		}
+		
+		if(portId == null){
+			System.out.println("No se ha encontrado el puerto COM");
+			return;
+		}
+		
+		try{
+			serialPort = (SerialPort) portId.open(this.getClass().getName(),TIME_OUT);
+			serialPort.setSerialPortParams(DATA_RATE, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
+			
+			input = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
+			output = serialPort.getOutputStream();
+			
+			serialPort.addEventListener(this);
+			serialPort.notifyOnDataAvailable(true);
+		} catch (Exception e){
+			System.err.println(e.toString());
+		}
 		
 	}
+	
+	public synchronized void cerrarConexion(){
+		if(serialPort != null){
+			serialPort.removeEventListener();
+			serialPort.close();
+		}
+	}
+	
+	public synchronized void enviarDatos(int dato){
+		try{
+			output.write(dato);
+		} catch (Exception e){
+			System.out.println("No se puede escribir el puerto");
+		}
+		
+	}
+	
 
 	public void registerObserver(BeatObserver o) {
 		beatObservers.add(o);
@@ -56,9 +122,16 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	}
 
 	@Override
-	public void serialEvent(SerialPortEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public synchronized void serialEvent(SerialPortEvent oEvent) {
+		if(oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE){
+			try{
+				String inputLine = input.readLine();
+				estado = Integer.parseInt(inputLine);
+				System.out.println(inputLine);
+			} catch (Exception e){
+				System.err.println(e.toString());
+			}
+		}
 	}
 
 }

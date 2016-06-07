@@ -4,10 +4,12 @@ public class DosifierController implements ControllerInterface {
 	
 	DosifierAdapter adapter;	//Se utiliza adapter en lugar de ModelInterface para reutilizar la escritura de los metodos
 								//revisar y opinar sobre este cambio
+	//DosifierModelInterface model;
 	DJView view;
 	
 	public DosifierController(DosifierModelInterface model) {
 		adapter = new DosifierAdapter(model);
+		//this.model = model;
 		view = new DJView(this, adapter);
         view.createView();
         view.createControls();
@@ -29,17 +31,15 @@ public class DosifierController implements ControllerInterface {
 	}
     
 	public void increaseBPM() {
-        int bpm = adapter.getBPM();
-        adapter.setBPM(bpm + 1);
+
 	}
     
 	public void decreaseBPM() {
-        int bpm = adapter.getBPM();
-        adapter.setBPM(bpm - 1);
+
   	}
   
  	public void setBPM(int bpm) {
-		adapter.setBPM(bpm);
+ 		adapter.setBPM(bpm);
 	}
 	
 	

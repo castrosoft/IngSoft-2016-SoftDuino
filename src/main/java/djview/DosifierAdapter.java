@@ -8,13 +8,15 @@ public class DosifierAdapter implements BeatModelInterface{
 		this.dosifier = dosifier;
 	}
 
-    public void initialize() {
-    	
+    public void initialize() {}
+  
+    public void on() {
+    	dosifier.abrirConexion();
     }
   
-    public void on() {}
-  
-    public void off() {}
+    public void off() {
+    	dosifier.cerrarConexion();
+    }
    
 	public int getBPM() {
 		return dosifier.getState();
