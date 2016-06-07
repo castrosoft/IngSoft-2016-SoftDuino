@@ -11,7 +11,7 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
     Sequence sequence;
     Track track;
  
-	public void initialize() {
+	public void initialize() {	
         setUpMidi();
         buildTrackAndStart();
 	}
