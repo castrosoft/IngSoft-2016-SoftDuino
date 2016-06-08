@@ -31,11 +31,11 @@ public class DosifierController implements ControllerInterface {
 	}
     
 	public void increaseBPM() {
-
+		adapter.setBPM(Integer.parseInt(view.bpmTextField.getText()));
 	}
     
 	public void decreaseBPM() {
-
+		adapter.setBPM(Integer.parseInt(view.bpmTextField.getText()));
   	}
   
  	public void setBPM(int bpm) {
