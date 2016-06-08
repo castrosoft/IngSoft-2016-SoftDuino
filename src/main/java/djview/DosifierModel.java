@@ -19,6 +19,7 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	private OutputStream output;
 	private static final int TIME_OUT=2000;
 	private static final int DATA_RATE=9600;
+	private String inputLine;
 	
 	ArrayList beatObservers = new ArrayList();
 	ArrayList bpmObservers = new ArrayList();
@@ -55,6 +56,8 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 		
 		try{
 			serialPort = (SerialPort) portId.open(this.getClass().getName(),TIME_OUT);
+			serialPort.disableReceiveTimeout();
+			serialPort.enableReceiveThreshold(1);
 			serialPort.setSerialPortParams(DATA_RATE, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 			
 			input = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
@@ -125,9 +128,9 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
 		if(oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE){
 			try{
-				String inputLine = input.readLine();
-				estado = Integer.parseInt(inputLine);
-				System.out.println(inputLine);
+				estado = input.read();
+				notifyBPMObservers();
+				notifyBeatObservers();
 			} catch (Exception e){
 				System.err.println(e.toString());
 			}

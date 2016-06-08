@@ -39,7 +39,7 @@ public class DosifierController implements ControllerInterface {
   	}
   
  	public void setBPM(int bpm) {
- 		adapter.setBPM(bpm);
+ 		adapter.setBPM(130);
 	}
 	
 	
