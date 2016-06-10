@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class DJView implements ActionListener,  BeatObserver, BPMObserver, CloroObserver, PhObserver, AlguicidaObserver, ClarificanteObserver {
+public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 	BeatModelInterface model; //tiene un
 	ControllerInterface controller; // tiene un
     JFrame viewFrame;
@@ -28,6 +28,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Cloro
 		this.model = model;
 		model.registerObserver((BeatObserver)this);
 		model.registerObserver((BPMObserver)this);
+		
     }
     
     public void createView() {
@@ -166,4 +167,68 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Cloro
 			 beatBar.setValue(100);
 		}
 	}
+	
+/*	@Override
+	public void updateCLARIFICANTE() {
+		if (model != null) {
+			int bpm = model.getBPM();
+			if (bpm == 0) {
+				if (bpmOutputLabel != null) {
+        			bpmOutputLabel.setText("Sin Trabajar");
+				}
+			} else {
+				if (bpmOutputLabel != null) {
+        			bpmOutputLabel.setText("CLARIFICANTE: " + model.getBPM());
+				}
+			}
+		}
+	}
+
+	@Override
+	public void updateALGUICIDA() {
+		if (model != null) {
+			int bpm = model.getBPM();
+			if (bpm == 0) {
+				if (bpmOutputLabel != null) {
+        			bpmOutputLabel.setText("Sin Trabajar");
+				}
+			} else {
+				if (bpmOutputLabel != null) {
+        			bpmOutputLabel.setText("ALGUICIDA: " + model.getBPM());
+				}
+			}
+		}
+	}
+
+	@Override
+	public void updatePH() {
+		if (model != null) {
+			int bpm = model.getBPM();
+			if (bpm == 0) {
+				if (bpmOutputLabel != null) {
+        			bpmOutputLabel.setText("Sin Trabajar");
+				}
+			} else {
+				if (bpmOutputLabel != null) {
+        			bpmOutputLabel.setText("CLORO: " + model.getBPM());
+				}
+			}
+		}
+	}
+
+	@Override
+	public void updateCLORO() {
+		if (model != null) {
+			int bpm = model.getBPM();
+			if (bpm == 0) {
+				if (bpmOutputLabel != null) {
+        			bpmOutputLabel.setText("Sin Trabajar");
+				}
+			} else {
+				if (bpmOutputLabel != null) {
+        			bpmOutputLabel.setText("PH: " + model.getBPM());
+				}
+			}
+		}
+	}*/
 }

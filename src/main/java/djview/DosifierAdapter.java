@@ -8,7 +8,8 @@ public class DosifierAdapter implements BeatModelInterface{
 		this.dosifier = dosifier;
 	}
 
-    public void initialize() {}
+    public void initialize() {
+    }
   
     public void on() {
     	dosifier.abrirConexion();
@@ -19,10 +20,7 @@ public class DosifierAdapter implements BeatModelInterface{
     }
    
 	public int getBPM() {
-		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-		StackTraceElement element = stackTrace[2];
-		System.out.println(element.getMethodName());
-		return dosifier.getState();
+		return dosifier.getStateCloro();
 	}
   
     public void setBPM(int bpm) {

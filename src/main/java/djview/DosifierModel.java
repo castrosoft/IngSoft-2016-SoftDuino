@@ -3,12 +3,13 @@ package main.java.djview;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+
 import gnu.io.CommPortIdentifier; 
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent; 
 import gnu.io.SerialPortEventListener; 
-import java.util.Enumeration;
 
+import java.util.Enumeration;
 import java.util.ArrayList;
 
 public class DosifierModel implements DosifierModelInterface, SerialPortEventListener {
@@ -19,15 +20,35 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	private OutputStream output;
 	private static final int TIME_OUT=2000;
 	private static final int DATA_RATE=9600;
-	private String inputLine;
+	private String inputLine = new String();
 	private byte[] readBuffer = new byte[400];
 	
+	ArrayList cloroObservers = new ArrayList();
+	ArrayList phObservers = new ArrayList();
+	ArrayList clarificanteObservers = new ArrayList();
+	ArrayList alguicidaObservers = new ArrayList();
 	ArrayList beatObservers = new ArrayList();
 	ArrayList bpmObservers = new ArrayList();
-	private int estado;
 	
-	public int getState() {
-		return estado;
+	private int estadoCloro;
+	private int estadoPH;
+	private int estadoClarificante;
+	private int estadoAlguicida;
+	
+	public int getStateCloro() {
+		return estadoCloro;
+	}
+	
+	public int getStatePh() {
+		return estadoPH;
+	}
+	
+	public int getStateAlguicida() {
+		return estadoAlguicida;
+	}
+	
+	public int getStateClarificante() {
+		return estadoClarificante;
 	}
 	
 	public void setQuantity(int cant){
@@ -89,6 +110,78 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	}
 	
 
+	public void registerObserver(PhObserver o) {
+		phObservers.add(o);
+	}
+
+	public void removeObserver(PhObserver o) {
+		int i = phObservers.indexOf(o);
+		if (i >= 0) {
+			phObservers.remove(i);
+		}
+	}
+
+	public void notifyPhObservers() {
+		for(int i = 0; i < phObservers.size(); i++) {
+			PhObserver observer = (PhObserver)phObservers.get(i);
+			observer.updatePH();
+		}
+	}
+
+	public void registerObserver(CloroObserver o) {
+		cloroObservers.add(o);
+	}
+
+	public void removeObserver(CloroObserver o) {
+		int i = cloroObservers.indexOf(o);
+		if (i >= 0) {
+			cloroObservers.remove(i);
+		}
+	}
+
+	public void notifyCloroObservers() {
+		for(int i = 0; i < cloroObservers.size(); i++) {
+			CloroObserver observer = (CloroObserver)cloroObservers.get(i);
+			observer.updateCLORO();
+		}
+	}
+	
+	public void registerObserver(ClarificanteObserver o) {
+		clarificanteObservers.add(o);
+	}
+
+	public void removeObserver(ClarificanteObserver o) {
+		int i = clarificanteObservers.indexOf(o);
+		if (i >= 0) {
+			clarificanteObservers.remove(i);
+		}
+	}
+
+	public void notifyClarificanteObservers() {
+		for(int i = 0; i < clarificanteObservers.size(); i++) {
+			ClarificanteObserver observer = (ClarificanteObserver)clarificanteObservers.get(i);
+			observer.updateCLARIFICANTE();
+		}
+	}
+	
+	public void registerObserver(AlguicidaObserver o) {
+		alguicidaObservers.add(o);
+	}
+
+	public void removeObserver(AlguicidaObserver o) {
+		int i = alguicidaObservers.indexOf(o);
+		if (i >= 0) {
+			alguicidaObservers.remove(i);
+		}
+	}
+
+	public void notifyAlguicidaObservers() {
+		for(int i = 0; i < alguicidaObservers.size(); i++) {
+			AlguicidaObserver observer = (AlguicidaObserver)alguicidaObservers.get(i);
+			observer.updateALGUICIDA();
+		}
+	}
+	
 	public void registerObserver(BeatObserver o) {
 		beatObservers.add(o);
 	}
@@ -130,12 +223,33 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 		if(oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE){
 			try{
 				if(input.ready()){
-					inputLine = input.readLine();
+					//inputLine = input.readLine();
+					inputLine = inputLine.concat(input.readLine());
+					if(inputLine.startsWith("c")){
+						estadoCloro = Integer.parseInt(inputLine.substring(1));
+						notifyCloroObservers();
+						notifyBPMObservers();
+					}
+					
+					if(inputLine.startsWith("p")){
+						estadoPH = Integer.parseInt(inputLine.substring(1));
+						notifyPhObservers();
+					}
+					
+					if(inputLine.startsWith("a")){
+						estadoAlguicida = Integer.parseInt(inputLine.substring(1));
+						notifyAlguicidaObservers();
+					}
+					
+					if(inputLine.startsWith("t")){
+						estadoClarificante = Integer.parseInt(inputLine.substring(1));
+						notifyClarificanteObservers();
+					}
 					System.out.println(inputLine);
+					inputLine = "";
 				}
-				estado = Integer.parseInt(inputLine);
-				notifyBPMObservers();
-				notifyBeatObservers();
+				//estado = Integer.parseInt(inputLine);
+				
 			} catch (Exception e){
 				System.err.println(e.toString());
 			}

@@ -29,21 +29,17 @@ public class DosifierController implements ControllerInterface {
 	}
     
 	public void increaseBPM() {
-		int cloro=Integer.parseInt(view.bpmTextField.getText());
-		if(cloro>0 && cloro<=63){
-			adapter.setBPM(cloro);
-		}
 	}
     
 	public void decreaseBPM() {
-		int ph=Integer.parseInt(view.bpmTextField.getText());
-		if(ph>0 && ph<=63){
-			adapter.setBPM(64+ph);
-		}
+		
   	}
   
  	public void setBPM(int bpm) {
- 		adapter.setBPM(130);
+ 		int cloro=Integer.parseInt(view.bpmTextField.getText());
+		if(cloro>0 && cloro<=63){
+			adapter.setBPM(cloro);
+		}
 	}
 	
 	

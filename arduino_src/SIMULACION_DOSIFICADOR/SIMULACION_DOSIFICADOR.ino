@@ -26,22 +26,39 @@ void loop() {
 
 void agregarCloro(int cant){
   for(int i=1;i<=cant;i++){
-    Serial.write(i);
-    delay(2000);
+    String dataSend1 = "c";
+    Serial.println(dataSend1+i);
+    delay(500);
   }
 }
 
 void agregarPh(int cant){
   for(int i=1;i<=cant;i++){
-    Serial.write(i);
-    delay(2000);
+    String dataSend1 = "p";
+    Serial.println(dataSend1+i);
+    delay(500);
   }
 }
 
 void dosisDiaria(){
   for(int i=1;i<=10;i++){
-    Serial.println("c");
-    Serial.println(i);
-    delay(2000);
+    String dataSend1 = "c";
+    Serial.println(dataSend1+i);
+    delay(500);
+  }
+  for(int i=1;i<=7;i++){
+    String dataSend1 = "p";
+    Serial.println(dataSend1+i);
+    delay(500);
+  }
+  for(int i=1;i<=5;i++){
+    String dataSend1 = "a";
+    Serial.println(dataSend1+i);
+    delay(500);
+  }
+  for(int i=1;i<=3;i++){
+    String dataSend1 = "t";
+    Serial.println(dataSend1+i);
+    delay(500);
   }
 }
