@@ -13,7 +13,7 @@ void loop() {
         if(incomingByte<=63){
             agregarCloro(incomingByte);
         } else {
-            if((incomingByte-64)<=63)){
+            if((incomingByte-64)<=63){
                 agregarPh(incomingByte-64);
             } else {
                 dosisDiaria();
@@ -25,22 +25,23 @@ void loop() {
 }
 
 void agregarCloro(int cant){
-  for(int i=0;i<=cant;i++){
+  for(int i=1;i<=cant;i++){
     Serial.write(i);
     delay(2000);
   }
 }
 
 void agregarPh(int cant){
-  for(int i=0;i<=cant;i++){
+  for(int i=1;i<=cant;i++){
     Serial.write(i);
     delay(2000);
   }
 }
 
 void dosisDiaria(){
-  for(int i=0;i<=10;i++){
-    Serial.write(i);
+  for(int i=1;i<=10;i++){
+    Serial.println("c");
+    Serial.println(i);
     delay(2000);
   }
 }

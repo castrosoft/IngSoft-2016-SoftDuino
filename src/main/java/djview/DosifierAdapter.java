@@ -19,6 +19,9 @@ public class DosifierAdapter implements BeatModelInterface{
     }
    
 	public int getBPM() {
+		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+		StackTraceElement element = stackTrace[2];
+		System.out.println(element.getMethodName());
 		return dosifier.getState();
 	}
   
