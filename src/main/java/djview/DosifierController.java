@@ -5,15 +5,21 @@ public class DosifierController implements ControllerInterface {
 	DosifierAdapter adapter;	//Se utiliza adapter en lugar de ModelInterface para reutilizar la escritura de los metodos
 								//revisar y opinar sobre este cambio
 	DJView view;
+	DosifierView dosifierView;
 	
-	public DosifierController(DosifierModelInterface model) {
-		adapter = new DosifierAdapter(model);
+	
+	public DosifierController(DosifierAdapter adapter) {
+		this.adapter = adapter;
 		view = new DJView(this, adapter);
         view.createView();
         view.createControls();
 		view.disableStopMenuItem();
 		view.enableStartMenuItem();
 		adapter.initialize();
+	}
+	
+	public DosifierController(DosifierModelInterface model){
+		
 	}
   
 	public void start() {

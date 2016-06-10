@@ -4,6 +4,6 @@ public class MyDosifierModelTestDrive {
 	 	public static void main (String[] args) {
 	 		
 			DosifierModel dosifierModel = new DosifierModel();
-	        ControllerInterface model = new DosifierController(dosifierModel);
+	        ControllerInterface model = new DosifierController(new DosifierAdapter(dosifierModel));
 	    }
 }
