@@ -87,6 +87,7 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 			
 			serialPort.addEventListener(this);
 			serialPort.notifyOnDataAvailable(true);
+			System.out.println("Conectado");
 		} catch (Exception e){
 			System.err.println(e.toString());
 		}
@@ -97,6 +98,8 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 		if(serialPort != null){
 			serialPort.removeEventListener();
 			serialPort.close();
+			System.out.println("Desconectado");
+			
 		}
 	}
 	

@@ -38,19 +38,44 @@ public class DosifierController implements ControllerInterface {
 	}
     
 	public void increaseBPM() {
+		String className = Thread.currentThread().getStackTrace()[2].getClassName();
+		if(className.equals("main.java.djview.DosifierView")){
+			int bpm = Integer.parseInt(dosifierView.phTextField.getText());
+			model.setQuantity(64+bpm);
+		}
+		
 	}
     
 	public void decreaseBPM() {
+		String className = Thread.currentThread().getStackTrace()[2].getClassName();
+		if(className.equals("main.java.djview.DosifierView")){
+			model.setQuantity(130);
+		}
 		
   	}
   
  	public void setBPM(int bpm) {
- 		int cloro=Integer.parseInt(view.bpmTextField.getText());
-		if(cloro>0 && cloro<=63){
-			adapter.setBPM(cloro);
+ 		if(bpm>0 && bpm<=63){
+			String className = Thread.currentThread().getStackTrace()[2].getClassName();
+			if(className.equals("main.java.djview.DosifierView")){
+				model.setQuantity(bpm);
+			}else{
+				adapter.setBPM(bpm);
+			}
 		}
 	}
+ 	
+ 	public void empezar(){
+ 		model.abrirConexion();
+ 		dosifierView.unselectDesconectado();
+ 		
+ 	}
 	
+ 	public void terminar(){
+ 		model.cerrarConexion();
+ 		dosifierView.unselectConectado();
+ 		
+ 	}
 	
 
 }
