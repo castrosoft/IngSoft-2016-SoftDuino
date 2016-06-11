@@ -26,15 +26,27 @@ public class DosifierController implements ControllerInterface {
 	}
   
 	public void start() {
-		adapter.on();
-		view.disableStartMenuItem();
-		view.enableStopMenuItem();
+		String className = Thread.currentThread().getStackTrace()[2].getClassName();
+		if(className.equals("main.java.djview.DosifierView$1")){
+			model.abrirConexion();
+			dosifierView.unselectDesconectado();
+		} else {
+			adapter.on();
+			view.disableStartMenuItem();
+			view.enableStopMenuItem();
+		}
 	}
   
 	public void stop() {
-		adapter.off();
-		view.disableStopMenuItem();
-		view.enableStartMenuItem();
+		String className = Thread.currentThread().getStackTrace()[2].getClassName();
+		if(className.equals("main.java.djview.DosifierView$2")){
+			model.cerrarConexion();
+			dosifierView.unselectConectado();
+		} else {
+			adapter.off();
+			view.disableStopMenuItem();
+			view.enableStartMenuItem();
+		}
 	}
     
 	public void increaseBPM() {
@@ -64,7 +76,7 @@ public class DosifierController implements ControllerInterface {
 			}
 		}
 	}
- 	
+ 	/*
  	public void empezar(){
  		model.abrirConexion();
  		dosifierView.unselectDesconectado();
@@ -75,7 +87,7 @@ public class DosifierController implements ControllerInterface {
  		model.cerrarConexion();
  		dosifierView.unselectConectado();
  		
- 	}
+ 	}*/
 	
 
 }
