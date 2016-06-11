@@ -1,7 +1,15 @@
+#include<Servo.h>
+
+Servo servoCloro;
+//Servo servoPh;
 int incomingByte=0;
+int valCl,valPh;
 
 void setup() {
-  // put your setup code here, to run once:
+  servoCloro.attach(3);
+  servoCloro.write(0);
+  pinMode(6,OUTPUT);
+  pinMode(9,OUTPUT);
   Serial.begin(9600);
 }
 
@@ -27,6 +35,7 @@ void loop() {
 void agregarCloro(int cant){
   for(int i=1;i<=cant;i++){
     String dataSend1 = "c";
+    dosisCloro();
     Serial.println(dataSend1+i);
     delay(500);
   }
@@ -35,30 +44,75 @@ void agregarCloro(int cant){
 void agregarPh(int cant){
   for(int i=1;i<=cant;i++){
     String dataSend1 = "p";
+    dosisPh();
     Serial.println(dataSend1+i);
     delay(500);
   }
 }
 
 void dosisDiaria(){
+  
   for(int i=1;i<=10;i++){
     String dataSend1 = "c";
+    dosisCloro();
     Serial.println(dataSend1+i);
     delay(500);
   }
+  
   for(int i=1;i<=7;i++){
     String dataSend1 = "p";
+    dosisPh();
     Serial.println(dataSend1+i);
     delay(500);
   }
+  
   for(int i=1;i<=5;i++){
     String dataSend1 = "a";
-    Serial.println(dataSend1+i);
+    encenderBombaAlguicida();
     delay(500);
+    Serial.println(dataSend1+i);
   }
+  apagarBombaAlguicida();
+  
   for(int i=1;i<=3;i++){
     String dataSend1 = "t";
-    Serial.println(dataSend1+i);
+    encenderBombaClarificante();
     delay(500);
+    Serial.println(dataSend1+i);
+  }
+  apagarBombaClarificante();
+}
+
+void dosisCloro(){
+    for(valCl=0;valCl<=180;valCl++){
+    servoCloro.write(valCl);
+    delay(4);
+  }
+  for(valCl=180;valCl>=0;valCl--){
+    servoCloro.write(valCl);
+    delay(4);
   }
 }
+
+void dosisPh(){
+    digitalWrite(6,HIGH);
+    delay(500);
+    digitalWrite(6,LOW);
+}
+
+void encenderBombaAlguicida(){
+    digitalWrite(9,HIGH);
+}
+
+void apagarBombaAlguicida(){
+    digitalWrite(9,LOW);
+}
+
+void encenderBombaClarificante(){
+    digitalWrite(2,HIGH);
+}
+
+void apagarBombaClarificante(){
+    digitalWrite(2,LOW);
+}
+
