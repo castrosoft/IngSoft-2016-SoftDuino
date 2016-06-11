@@ -5,182 +5,146 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
 public class DosifierView implements ActionListener, PhObserver,CloroObserver,ClarificanteObserver,AlguicidaObserver{
 	
-	DosifierModelInterface model; //tiene un
-	ControllerInterface controller; // tiene un
-    JFrame viewFrame;
-    JPanel viewPanel;
-	BeatBar beatBar;
-	JLabel bpmOutputLabel;
-    JFrame controlFrame;
-    JPanel controlPanel;
-    JLabel bpmLabel;
-    JTextField bpmTextField;
-    JButton setBPMButton;
-    JButton increaseBPMButton;
-    JButton decreaseBPMButton;
-    JMenuBar menuBar;
-    JMenu menu;
-    JMenuItem startMenuItem;
-    JMenuItem stopMenuItem;
-
-    public DosifierView(ControllerInterface controller, DosifierModelInterface model) {	
+	ControllerInterface controller;
+	DosifierModelInterface model;
+	
+	JFrame viewFrame;
+	JPanel controlPanel;
+	JPanel buttonPanel;
+	JPanel infoPanel;
+	BeatBar beatBar1;
+	BeatBar beatBar2;
+	BeatBar beatBar3;
+	BeatBar beatBar4;
+	
+	JTextField cloroTextField;
+	JTextField phTextField;
+	
+	JButton	cloroButton;
+	JButton	phButton;
+	JButton	diariaButton;
+	
+	JRadioButton conectado;
+	JRadioButton desconectado;
+	
+	JLabel cloroLabel;
+	JLabel phLabel;
+	JLabel clarificanteLabel;
+	JLabel alguicidaLabel;
+	JLabel enviarCloro;
+	JLabel enviarPh;
+	
+	
+	public DosifierView(ControllerInterface controller, DosifierModelInterface model){
 		this.controller = controller;
 		this.model = model;
-		model.registerObserver((CloroObserver)this);
-		model.registerObserver((PhObserver)this);
-		model.registerObserver((ClarificanteObserver)this);
 		model.registerObserver((AlguicidaObserver)this);
-    }
-    
-    public void createView() {
-		// Create all Swing components here
-        viewPanel = new JPanel(new GridLayout(1, 2));
-        viewFrame = new JFrame("View");
-        viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        viewFrame.setSize(new Dimension(100, 80));
-        bpmOutputLabel = new JLabel("offline", SwingConstants.CENTER);
-		beatBar = new BeatBar();
-		beatBar.setValue(0);
-        JPanel bpmPanel = new JPanel(new GridLayout(2, 1));
-		bpmPanel.add(beatBar);
-        bpmPanel.add(bpmOutputLabel);
-        viewPanel.add(bpmPanel);
-        viewFrame.getContentPane().add(viewPanel, BorderLayout.CENTER);
-        viewFrame.pack();
-        viewFrame.setVisible(true);
+		model.registerObserver((ClarificanteObserver)this);
+		model.registerObserver((PhObserver)this);
+		model.registerObserver((CloroObserver)this);
 	}
-  
-  
-    public void createControls() {
-		// Create all Swing components here
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        controlFrame = new JFrame("Control");
-        controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        controlFrame.setSize(new Dimension(100, 80));
-
-        controlPanel = new JPanel(new GridLayout(1, 2));
-
-        menuBar = new JMenuBar();
-        menu = new JMenu("DJ Control");
-        startMenuItem = new JMenuItem("Start");
-        menu.add(startMenuItem);
-        startMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                controller.start();
-            }
-        });
-        stopMenuItem = new JMenuItem("Stop");
-        menu.add(stopMenuItem); 
-        stopMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                controller.stop();
-            }
-        });
-        JMenuItem exit = new JMenuItem("Quit");
-        exit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                System.exit(0);
-            }
-        });
-
-        menu.add(exit);
-        menuBar.add(menu);
-        controlFrame.setJMenuBar(menuBar);
-
-        bpmTextField = new JTextField(2);
-        bpmLabel = new JLabel("Enter BPM:", SwingConstants.RIGHT);
-        setBPMButton = new JButton("Diario");
-        setBPMButton.setSize(new Dimension(10,40));
-        increaseBPMButton = new JButton("PH");
-        decreaseBPMButton = new JButton("Cloro");
-        setBPMButton.addActionListener(this);
-        increaseBPMButton.addActionListener(this);
-        decreaseBPMButton.addActionListener(this);
-
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
-
-		buttonPanel.add(decreaseBPMButton);
-		buttonPanel.add(increaseBPMButton);
-
-        JPanel enterPanel = new JPanel(new GridLayout(1, 2));
-        enterPanel.add(bpmLabel);
-        enterPanel.add(bpmTextField);
-        JPanel insideControlPanel = new JPanel(new GridLayout(3, 1));
-        insideControlPanel.add(enterPanel);
-        insideControlPanel.add(setBPMButton);
-        insideControlPanel.add(buttonPanel);
-        controlPanel.add(insideControlPanel);
-        
-        bpmLabel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
-        bpmOutputLabel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
-
-        controlFrame.getRootPane().setDefaultButton(setBPMButton);
-        controlFrame.getContentPane().add(controlPanel, BorderLayout.CENTER);
-
-        controlFrame.pack();
-        controlFrame.setVisible(true);
-    }
-
-	public void enableStopMenuItem() {
-    	stopMenuItem.setEnabled(true);
+	
+	public void createDosifierGUI(){
+		viewFrame = new JFrame("Dosifier Manager");
+		viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		viewFrame.setBounds(100, 100, 700, 150);
+		
+		controlPanel = new JPanel(new GridLayout(6,1));
+		infoPanel = new JPanel(new GridLayout(4,2));
+		buttonPanel = new JPanel(new GridLayout(3,1));
+		
+		cloroTextField = new JTextField(10);
+		phTextField = new JTextField(10);
+		
+		conectado = new JRadioButton("Conectado");
+		desconectado = new JRadioButton("Desonectado");
+		
+		cloroButton = new JButton("Enviar Cloro");
+		phButton = new JButton("Enviar PH");
+		diariaButton = new JButton("Diaria");
+		
+		beatBar1 = new BeatBar();
+		beatBar2 = new BeatBar();
+		beatBar3 = new BeatBar();
+		beatBar4 = new BeatBar();
+		
+		cloroLabel = new JLabel("Cloro Suministrado: --");
+		phLabel = new JLabel("PH Suministrado:--");
+		alguicidaLabel = new JLabel("Alguicida Suministrado: --");
+		clarificanteLabel = new JLabel("Clarificante Suministrado: --");
+		enviarCloro = new JLabel("Dosis de Cloro:");
+		enviarPh = new JLabel("Dosis de Ph:");
+		
+		viewFrame.getContentPane().add(controlPanel, BorderLayout.WEST);
+		viewFrame.getContentPane().add(buttonPanel, BorderLayout.CENTER);
+		viewFrame.getContentPane().add(infoPanel, BorderLayout.EAST);
+		
+		controlPanel.add(enviarCloro);
+		controlPanel.add(cloroTextField);
+		controlPanel.add(enviarPh);
+		controlPanel.add(phTextField);
+		
+		controlPanel.add(conectado);
+		controlPanel.add(desconectado);
+		
+		buttonPanel.add(cloroButton);
+		buttonPanel.add(phButton);
+		buttonPanel.add(diariaButton);
+		
+		infoPanel.add(beatBar1);
+		infoPanel.add(beatBar2);
+		infoPanel.add(beatBar3);
+		infoPanel.add(beatBar4);
+		
+		infoPanel.add(cloroLabel);
+		infoPanel.add(phLabel);
+		infoPanel.add(alguicidaLabel);
+		infoPanel.add(clarificanteLabel);
+		
+		
+		viewFrame.setVisible(true);
+		
 	}
 
-	public void disableStopMenuItem() {
-    	stopMenuItem.setEnabled(false);
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void enableStartMenuItem() {
-    	startMenuItem.setEnabled(true);
+
+
+	@Override
+	public void updateALGUICIDA() {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void disableStartMenuItem() {
-    	startMenuItem.setEnabled(false);
+
+
+	@Override
+	public void updateCLARIFICANTE() {
+		// TODO Auto-generated method stub
+		
 	}
 
-    public void actionPerformed(ActionEvent event) {
-		if (event.getSource() == setBPMButton) {
-			int bpm = Integer.parseInt(bpmTextField.getText());
-        	controller.setBPM(bpm);
-		} else if (event.getSource() == increaseBPMButton) {
-			controller.increaseBPM();
-		} else if (event.getSource() == decreaseBPMButton) {
-			controller.decreaseBPM();
-		}
-    }
 
-	public void updateBPM() {
-		if (model != null) {
-			int bpm = model.getBPM();
-			if (bpm == 0) {
-				if (bpmOutputLabel != null) {
-        			bpmOutputLabel.setText("offline");
-				}
-			} else {
-				if (bpmOutputLabel != null) {
-        			bpmOutputLabel.setText("CurrentBPM: " + model.getBPM());
-				}
-			}
-		}
-	}
-  
-	public void updateBeat() {
-		if (beatBar != null) {
-			 beatBar.setValue(100);
-		}
+
+	@Override
+	public void updatePH() {
+		// TODO Auto-generated method stub
+		
 	}
 
+
+
+	@Override
+	public void updateCLORO() {
+		// TODO Auto-generated method stub
+		
+	}
 }

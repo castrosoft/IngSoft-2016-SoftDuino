@@ -2,8 +2,8 @@ package main.java.djview;
 
 public class DosifierController implements ControllerInterface {
 	
-	DosifierAdapter adapter;	//Se utiliza adapter en lugar de ModelInterface para reutilizar la escritura de los metodos
-								//revisar y opinar sobre este cambio
+	DosifierAdapter adapter;	//Se utiliza adapter en lugar de ModelInterface para reutilizar la escritura de los metodos							//revisar y opinar sobre este cambio
+	DosifierModelInterface model;
 	DJView view;
 	DosifierView dosifierView;
 	
@@ -19,6 +19,9 @@ public class DosifierController implements ControllerInterface {
 	}
 	
 	public DosifierController(DosifierModelInterface model){
+		this.model = model;
+		dosifierView = new DosifierView(this,model);
+		dosifierView.createDosifierGUI();
 		
 	}
   
