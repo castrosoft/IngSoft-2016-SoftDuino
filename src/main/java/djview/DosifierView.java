@@ -11,7 +11,7 @@ import com.sun.glass.events.MouseEvent;
 
 public class DosifierView implements ActionListener, PhObserver,CloroObserver,ClarificanteObserver,AlguicidaObserver{
 	
-	DosifierController controller;
+	ControllerInterface controller;
 	DosifierModelInterface model;
 	
 	JFrame viewFrame;
@@ -116,13 +116,13 @@ public class DosifierView implements ActionListener, PhObserver,CloroObserver,Cl
 		
 		conectado.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                controller.empezar();
+                controller.start();
             }
         });
 		
 		desconectado.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-            	controller.terminar();
+            	controller.stop();
             }
         });
 		
