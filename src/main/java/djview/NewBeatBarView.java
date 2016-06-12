@@ -39,9 +39,7 @@ public class NewBeatBarView implements ActionListener{
 		window.pack();
 		
 		//beatButton.doClick();
-		
-
-		
+	
 		window.setVisible(true);
 		
 		
@@ -55,6 +53,8 @@ public class NewBeatBarView implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 		if(event.getSource() == beatButton){
 			setController(new BeatController(new BeatModel()));
+			//djView.createView();
+			//djView.createControls();
 			heartButton.setSelected(false);
 			dosifierButton.setSelected(false);
 		}else{
