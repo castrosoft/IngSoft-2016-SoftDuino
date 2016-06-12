@@ -51,7 +51,7 @@ https://github.com/castrosoft/IngSoft-2016-SoftDuino
  TravisCI:  
  Herramienta de gestión de configuración utilizado por el software, hardware, y los grupos de ingeniería para el control de calidad de código fuente y entornos construidos. Las construcciones se activan automáticamente en función de los cambios en los repositorios.
 La forma de acceso a la herramienta es a través de la siguiente dirección URL:
-[https://travis-ci.org/ramirofd/Calculadora-SoftDuino-IS2016](http://https://travis-ci.org/ramirofd/Calculadora-SoftDuino-IS2016)
+[http://colocar.URL.aquí](http://colocar.URL.aquí "TRAVIS CI")
 
 
 ----------
