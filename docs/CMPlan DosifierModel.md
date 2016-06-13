@@ -83,7 +83,7 @@
 </ul>
 <p>&nbsp;Herramienta de gesti&oacute;n de configuraci&oacute;n utilizado por el software, hardware, y los grupos de ingenier&iacute;a para el control de calidad de c&oacute;digo fuente y entornos construidos. Las construcciones se activan autom&aacute;ticamente en funci&oacute;n de los cambios en los repositorios.</p>
 <p>La forma de acceso a la herramienta es a trav&eacute;s de la siguiente direcci&oacute;n URL:</p>
-<p><a href="https://travis-ci.org">&lt;direccion de TRAVIS CI aqu&iacute;&gt;</a></p>
+<p><a href="https://travis-ci.org/castrosoft/IngSoft-2016-SoftDuino">https://travis-ci.org/castrosoft/IngSoft-2016-SoftDuino</a></p>
 <p>&nbsp;</p>
 <h1>&nbsp;&nbsp;<a name="_Toc447898566"></a>ROLES DEL CM</h1>
 <h2 style="padding-left: 60px;"><a name="_Toc447898567"></a>Gestores de configuraci&oacute;n del proyecto</h2>
@@ -286,7 +286,7 @@
 <h2 style="padding-left: 60px;"><a id="Merge"></a>Estrategias de combinaci&oacute;n</h2>
 <p>Se debe realizar la combinaci&oacute;n solo cuando la funcionalidad est&eacute; lista para entregarse como release.</p>
 <h1>&nbsp;</h1>
-<h1><a id="CONTROL DE ENTREGAS"></a>CONTROL DE ENTREGAS </h1>
+<h1><a id="CONTROL DE ENTREGAS"></a>CONTROL DE ENTREGAS</h1>
 <h2 style="padding-left: 60px;"><a id="Releases"></a>Releases, entregas e instalaci&oacute;n</h2>
 <p><br />Los archivos ser&aacute;n comprimidos en formato *.zip&nbsp; y enviados por email<br />a <a href="mailto:martinmiceli@gmail.com">martinmiceli@gmail.com</a>,&nbsp;<a href="mailto:noninojulian@gmail.com">noninojulian@gmail.com</a> <br />Los archivos a entregar son:<br />- Informe.<br />- Presentaci&oacute;n.<br />- Ejecutables (JARs) <br />- Direccion de acceso al repositorio.</p>
 <p>Para soporte e informes sobre problemas, podr&aacute; dirigirse a un link mediante el cual se seguir&aacute;n los informes recibidos por los usuarios:</p>
