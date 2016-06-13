@@ -12,11 +12,6 @@ dependencies {
     compile  files('libs/RXTXcomm.jar')
 }
 
-checkstyle {
-    ignoreFailures = true
-    toolVersion = '6.6'
-}
-
 tasks.withType(Checkstyle) {
     reports {
         xml.enabled = false
