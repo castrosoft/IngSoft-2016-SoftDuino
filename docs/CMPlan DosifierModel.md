@@ -16,7 +16,9 @@
 <p style="text-align: left;"><a href="#_Toc447898575">CM DEL CODIGO FUENTE</a></p>
 <p style="padding-left: 30px; text-align: left;"><a href="#_Toc447898576">Norma de Etiquetado</a></p>
 <p style="padding-left: 30px; text-align: left;"><a href="#_Toc447898577">Esquema de ramas</a></p>
-<p style="padding-left: 30px; text-align: left;"><a href="#_Toc447898578">Estrategias de Combianci&oacute;n<br /></a></p>
+<p style="padding-left: 30px; text-align: left;"><a href="Merge">Estrategias de Combianci&oacute;n</a></p>
+<p><span style="text-align: left; color: #0000ff;"><a href="CONTROL DE ENTREGAS">CONTROL DE ENTREGAS </a></span></p>
+<p style="padding-left: 30px;"><a href="Releases">Releases, entregas e instalaci&oacute;n</a></p>
 <h1><a name="_Toc447898562"></a>INTRODUCCION</h1>
 <h2 style="padding-left: 60px;"><a name="_Toc447898563"></a>Prop&oacute;sito y alcance</h2>
 <p>El objetivo de este documento es presentar la estrategia general para la Administraci&oacute;n de Configuraciones del Proyecto IngSoft-2016-SoftDuino.</p>
@@ -31,7 +33,7 @@
 <li>Mejora del proceso</li>
 </ul>
 <p>&nbsp;</p>
-<table class="tg">
+<table class="tg" style="margin-left: auto; margin-right: auto;">
 <tbody>
 <tr><th class="tg-baqh">Acr&oacute;nimo</th><th class="tg-baqh">Descripcion</th></tr>
 <tr>
@@ -254,13 +256,13 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h1><a name="_Toc447898573"></a>IDENTIFICACION DE LAS CONFIGURACIONES</h1>
-<p><span style="background-color: #ffff99;">El esquema de directorios debe seguir una estructura como la descrita por la siguiente imagen:</span></p>
 <p>&nbsp;</p>
-<p>Para el esquema descrito se debe seguir como norma que:</p>
 <ul>
 <li>En la carpeta "<em>Main"</em> se almacenar&aacute; todo lo relacionado con el propio funcionamiento de la aplicaci&oacute;n, mientras que en la carpeta <em>"Test"</em> contendr&aacute; todo lo necesario para realizar las pruebas de la aplicaci&oacute;n.</li>
 <li>Las carpetas "<em>java"</em> contendr&aacute;n los archivos .java, los cuales sus nombres deben ser algo que identifique el funcionamiento de las clases. Deber&aacute; respetarse que la primera letra de cada palabra que componga el nombre sea una may&uacute;scula, para el caso de las clases que realizan pruebas el nombre debe finalizar con la palabra <em>"Test"</em>.</li>
 <li>Las carpetas <em>"resources" </em>almacenar&aacute;n cualquier recurso necesario para el funcionamiento de la aplicaci&oacute;n y para realizar las pruebas sobre la misma. El nombre de los archivos deber&aacute; ser escrito todo en min&uacute;scula, si contiene m&aacute;s de una palabra, estas deber&aacute;n separarse por guiones medios <em>"-"</em>.</li>
+<li>La carpeta "arduino_src" contendr&aacute; archivos de extension ".ino" que corresponden a las configuraciones que se implementan sobre la placa Arduino.</li>
+<li>la carpeta "libs" contendr&aacute; las librerias externas de las cuales se sirva la aplicacion.</li>
 </ul>
 <p>&nbsp;</p>
 <h1><a name="_Toc447898574"></a>EQUIPOS DE TRABAJO</h1>
@@ -281,9 +283,11 @@
 <h2 style="padding-left: 60px;"><a name="_Toc447898577"></a>Esquema de ramas</h2>
 <p>Hay una rama principal (<em>master</em>) la cual contendr&aacute; las versiones definitivas a partir de la cual se crear&aacute;n ramas paralelas para el desarrollo del proyecto. Una vez implementado con &eacute;xito un cambio se fusionar&aacute; la rama de trabajo con la principal. Cualquier desarrollador puede trabajar en cualquier rama y de ser necesario un desarrollador puede crear ramas privadas para trabajar sin afectar el desarrollo principal de la aplicaci&oacute;n.</p>
 <p>&nbsp;</p>
-<h2 style="padding-left: 60px;">Estrategias de combinaci&oacute;n</h2>
+<h2 style="padding-left: 60px;"><a id="Merge"></a>Estrategias de combinaci&oacute;n</h2>
 <p>Se debe realizar la combinaci&oacute;n solo cuando la funcionalidad est&eacute; lista para entregarse como release.</p>
-<h2 style="padding-left: 60px;">&nbsp;</h2>
-<h2 style="padding-left: 60px;">Releases, entregas e instalaci&oacute;n</h2>
-<p>La entrega del release se har&aacute; mediante un CD con el instalador, manual de usuario y gu&iacute;a de ayuda para problemas. Para soporte e informes sobre problemas, podr&aacute; dirigirse a un link mediante el cual se seguir&aacute;n los informes recibidos por los usuarios:</p>
+<h1>&nbsp;</h1>
+<h1><a id="CONTROL DE ENTREGAS"></a>CONTROL DE ENTREGAS </h1>
+<h2 style="padding-left: 60px;"><a id="Releases"></a>Releases, entregas e instalaci&oacute;n</h2>
+<p><br />Los archivos ser&aacute;n comprimidos en formato *.zip&nbsp; y enviados por email<br />a <a href="mailto:martinmiceli@gmail.com">martinmiceli@gmail.com</a>,&nbsp;<a href="mailto:noninojulian@gmail.com">noninojulian@gmail.com</a> <br />Los archivos a entregar son:<br />- Informe.<br />- Presentaci&oacute;n.<br />- Ejecutables (JARs) <br />- Direccion de acceso al repositorio.</p>
+<p>Para soporte e informes sobre problemas, podr&aacute; dirigirse a un link mediante el cual se seguir&aacute;n los informes recibidos por los usuarios:</p>
 <p><a href="https://github.com/castrosoft/IngSoft-2016-SoftDuino/issues">https://github.com/castrosoft/IngSoft-2016-SoftDuino/issues</a></p>
