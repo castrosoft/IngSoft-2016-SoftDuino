@@ -16,9 +16,9 @@
 <p style="text-align: left;"><a href="#_Toc447898575">CM DEL CODIGO FUENTE</a></p>
 <p style="padding-left: 30px; text-align: left;"><a href="#_Toc447898576">Norma de Etiquetado</a></p>
 <p style="padding-left: 30px; text-align: left;"><a href="#_Toc447898577">Esquema de ramas</a></p>
-<p style="padding-left: 30px; text-align: left;"><a href="Merge">Estrategias de Combianci&oacute;n</a></p>
-<p><span style="text-align: left; color: #0000ff;"><a href="CONTROL DE ENTREGAS">CONTROL DE ENTREGAS </a></span></p>
-<p style="padding-left: 30px;"><a href="Releases">Releases, entregas e instalaci&oacute;n</a></p>
+<p style="padding-left: 30px; text-align: left;"><a href="#Merge">Estrategias de Combianci&oacute;n</a></p>
+<p><span style="text-align: left; color: #0000ff;"><a href="#CONTROL DE ENTREGAS">CONTROL DE ENTREGAS </a></span></p>
+<p style="padding-left: 30px;"><a href="#Releases">Releases, entregas e instalaci&oacute;n</a></p>
 <h1><a name="_Toc447898562"></a>INTRODUCCION</h1>
 <h2 style="padding-left: 60px;"><a name="_Toc447898563"></a>Prop&oacute;sito y alcance</h2>
 <p>El objetivo de este documento es presentar la estrategia general para la Administraci&oacute;n de Configuraciones del Proyecto IngSoft-2016-SoftDuino.</p>
