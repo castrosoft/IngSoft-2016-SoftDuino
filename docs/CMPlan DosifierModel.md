@@ -274,7 +274,7 @@
 <h2 style="padding-left: 60px;"><a name="_Toc447898576"></a>Norma de Etiquetado</h2>
 <p>Para el etiquetado se respetar&aacute; la forma X1.X2.X3 donde:</p>
 <ul>
-<li>X1 comienza en 1 y aumenta siempre y cuando se realice un gran aumento en la cantidad de funcionalidades de la aplicaci&oacute;n.</li>
+<li>X1 comienza en 0 y aumenta siempre y cuando se realice un gran aumento en la cantidad de funcionalidades de la aplicaci&oacute;n.</li>
 <li>X2 comienza en 0 y aumenta seg&uacute;n se agregan funcionalidades menores.</li>
 <li>X3 comienza en 0 y se aumentar&aacute; seg&uacute;n se corrigen bugs sobre esa versi&oacute;n.</li>
 </ul>
