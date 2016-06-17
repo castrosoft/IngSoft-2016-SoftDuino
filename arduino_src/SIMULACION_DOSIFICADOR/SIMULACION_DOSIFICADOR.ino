@@ -10,6 +10,7 @@ void setup() {
   servoCloro.write(0);
   pinMode(6,OUTPUT);
   pinMode(9,OUTPUT);
+  pinMode(2,OUTPUT);
   Serial.begin(9600);
 }
 
