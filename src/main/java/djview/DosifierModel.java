@@ -59,7 +59,7 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	
 	public void abrirConexion(){
 
-		/*System.setProperty("gnu.io.rxtx.SerialPorts", "COM3");
+		System.setProperty("gnu.io.rxtx.SerialPorts", "COM3");
 		
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
@@ -93,7 +93,7 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 			System.out.println("Conectado");
 		} catch (Exception e){
 			System.err.println(e.toString());
-		}*/
+		}
 		
 	}
 	
