@@ -7,8 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import com.sun.glass.events.MouseEvent;
-
 public class DosifierView implements ActionListener, PhObserver,CloroObserver,ClarificanteObserver,AlguicidaObserver{
 	
 	ControllerInterface controller;
