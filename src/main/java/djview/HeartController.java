@@ -20,7 +20,7 @@ public class HeartController implements ControllerInterface {
 	public void stop() {}
     
 	public void increaseBPM() {
-		HeartModel heartModel = HeartModel.getInstance();
+		new HeartAdapter(model).setBPM(0);
 	}
     
 	public void decreaseBPM() {}

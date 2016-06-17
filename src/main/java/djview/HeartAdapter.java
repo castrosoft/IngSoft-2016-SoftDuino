@@ -17,7 +17,9 @@ public class HeartAdapter implements BeatModelInterface {
 		return heart.getHeartRate();
 	}
   
-    public void setBPM(int bpm) {}
+    public void setBPM(int bpm) {
+    	HeartModel heartModel = HeartModel.getInstance();
+    }
    
 	public void registerObserver(BeatObserver o) {
 		heart.registerObserver(o);

@@ -25,6 +25,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     JMenuItem startMenuItem;
     JMenuItem stopMenuItem;
 
+    
     public DJView(ControllerInterface controller, BeatModelInterface model) {
 		this.controller = controller;
 		this.model = model;
@@ -52,7 +53,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
         viewFrame.setVisible(true);
 	}
   
-  
+    
     public void createControls() {
 		// Create all Swing components here
         JFrame.setDefaultLookAndFeelDecorated(true);
