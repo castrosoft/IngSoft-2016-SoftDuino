@@ -6,7 +6,4 @@ public interface ControllerInterface {
 	void increaseBPM();
 	void decreaseBPM();
  	void setBPM(int bpm);
- 	
- 	
- 	
 }

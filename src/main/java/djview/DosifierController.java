@@ -88,6 +88,4 @@ public class DosifierController implements ControllerInterface {
  		dosifierView.unselectConectado();
  		
  	}*/
-	
-
 }
