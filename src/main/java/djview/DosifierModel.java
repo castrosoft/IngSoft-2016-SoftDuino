@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class DosifierModel implements DosifierModelInterface, SerialPortEventListener {
 	
+	DosifierSimulator simulator = new DosifierSimulator(this);
+	
 	SerialPort serialPort;
 	private static final String PORT_NAMES[] = {"COM3"};
 	private BufferedReader input;
@@ -56,7 +58,8 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	}
 	
 	public void abrirConexion(){
-		System.setProperty("gnu.io.rxtx.SerialPorts", "COM3");
+
+		/*System.setProperty("gnu.io.rxtx.SerialPorts", "COM3");
 		
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
@@ -90,7 +93,7 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 			System.out.println("Conectado");
 		} catch (Exception e){
 			System.err.println(e.toString());
-		}
+		}*/
 		
 	}
 	
@@ -104,12 +107,14 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	}
 	
 	public synchronized void enviarDatos(int dato){
-		try{
+		/*try{
 			output.write(dato);
 		} catch (Exception e){
 			System.out.println("No se puede escribir el puerto");
-		}
-		
+		}*/
+		Thread thread = new Thread(simulator);
+		simulator.recibirDato(dato);
+		thread.start();
 	}
 	
 
@@ -257,6 +262,32 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 				System.err.println(e.toString());
 			}
 		}
+	}
+	
+	public void recibirDato(String dato){
+		inputLine = inputLine.concat(dato);
+		if(inputLine.startsWith("c")){
+			estadoCloro = Integer.parseInt(inputLine.substring(1));
+			notifyCloroObservers();
+			notifyBPMObservers();
+		}
+		
+		if(inputLine.startsWith("p")){
+			estadoPH = Integer.parseInt(inputLine.substring(1));
+			notifyPhObservers();
+		}
+		
+		if(inputLine.startsWith("a")){
+			estadoAlguicida = Integer.parseInt(inputLine.substring(1));
+			notifyAlguicidaObservers();
+		}
+		
+		if(inputLine.startsWith("t")){
+			estadoClarificante = Integer.parseInt(inputLine.substring(1));
+			notifyClarificanteObservers();
+		}
+		System.out.println(inputLine);
+		inputLine = "";
 	}
 
 }
