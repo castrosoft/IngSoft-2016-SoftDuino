@@ -19,6 +19,13 @@ tasks.withType(Checkstyle) {
     }
 }
 
+test {
+    testLogging {
+        events "failed"
+        exceptionFormat "short"
+    }
+}
+
 pmd {
     ignoreFailures = true
 }
