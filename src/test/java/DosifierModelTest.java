@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 import static org.junit.Assert.*;
 import main.java.djview.ControllerInterface;
@@ -28,7 +28,7 @@ public class DosifierModelTest {
 	}
 
 	@Test
-	public void testEnvioCantidadCloro() {
+	public void testEnvioDato() {
 		int dato = 3;
 		model.enviarDatos(dato);
 		int respuesta = simulator.getIncomingByte();
@@ -75,8 +75,8 @@ public class DosifierModelTest {
 	}
 	
 	@Test
-	public void testRecepcionEstadoCloro(){
-		int dato = 2;						//Valor entre 1 y 63 corresponde a cloro						
+	public void testRecepcionCantidadCloro(){
+		int dato = 2;												
 		model.enviarDatos(dato);
 		try {								//Se Espera que el "hardware" simulado procese la informacion
 			Thread.sleep(4330);
@@ -88,9 +88,9 @@ public class DosifierModelTest {
 	}
 	
 	@Test
-	public void testRecepcionEstadoPh(){
+	public void testRecepcionCantidadPh(){
 		int cantidad = 2;
-		int dato = 64+cantidad;						//Valor entre 1 y 63 corresponde a cloro						
+		int dato = 64+cantidad;											
 		model.enviarDatos(dato);
 		try {								//Se Espera que el "hardware" simulado procese la informacion
 			Thread.sleep(4330);
@@ -102,8 +102,8 @@ public class DosifierModelTest {
 	}
 	
 	@Test
-	public void testRecepcionEstadosDiaria(){
-		int dato = 130;						//Valor entre 1 y 63 corresponde a cloro						
+	public void testRecepcionCantidadesDiaria(){
+		int dato = 130;											
 		model.enviarDatos(dato);
 		try {								//Se Espera que el "hardware" simulado procese la informacion
 			Thread.sleep(28500);
