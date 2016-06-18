@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 public class DosifierModel implements DosifierModelInterface, SerialPortEventListener {
 	
-	DosifierSimulator simulator = new DosifierSimulator(this);
+	DosifierSimulator simulator;
 	
 	SerialPort serialPort;
 	private static final String PORT_NAMES[] = {"COM3"};
@@ -38,6 +38,10 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	private int estadoPH;
 	private int estadoClarificante;
 	private int estadoAlguicida;
+	
+	public DosifierModel(DosifierSimulator simulator){
+		this.simulator = simulator;
+	}
 	
 	public int getStateCloro() {
 		return estadoCloro;
@@ -114,11 +118,8 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 				System.out.println("No se puede escribir el puerto");
 			}
 		}else{
-			//System.out.println("Se envió a un simulador");
-			//System.out.println(JOptionPane.showInputDialog("Se envio a un simulador"));
-		   JOptionPane.showMessageDialog(null, "Se envio a un simulador");
-			
-			
+			//JOptionPane.showMessageDialog(null, "Se envio a un simulador");
+			System.out.println("Se envio a un simulador");
 			Thread thread = new Thread(simulator);
 			simulator.recibirDato(dato);
 			thread.start();
@@ -239,7 +240,6 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 		if(oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE){
 			try{
 				if(input.ready()){
-					//inputLine = input.readLine();
 					inputLine = inputLine.concat(input.readLine());
 					if(inputLine.startsWith("c")){
 						estadoCloro = Integer.parseInt(inputLine.substring(1));
@@ -263,9 +263,7 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 					}
 					System.out.println(inputLine);
 					inputLine = "";
-				}
-				//estado = Integer.parseInt(inputLine);
-				
+				}	
 			} catch (Exception e){
 				System.err.println(e.toString());
 			}
@@ -273,8 +271,7 @@ public class DosifierModel implements DosifierModelInterface, SerialPortEventLis
 	}
 	
 	public void recibirDato(String dato){
-		JOptionPane.showMessageDialog(null, "recibiendo de un simulador");
-		//System.out.println("Recibiendo de Simulador");
+		System.out.println("Recibiendo de Simulador");
 		inputLine = inputLine.concat(dato);
 		if(inputLine.startsWith("c")){
 			estadoCloro = Integer.parseInt(inputLine.substring(1));

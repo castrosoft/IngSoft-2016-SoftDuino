@@ -2,6 +2,7 @@ package main.java.djview;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class ViewModelSelector extends DJView{
@@ -12,24 +13,6 @@ public class ViewModelSelector extends DJView{
 		super(controller, model);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
     public void createControls() {
 		// Create all Swing components here
@@ -138,7 +121,10 @@ public class ViewModelSelector extends DJView{
     				setModel(new HeartAdapter(HeartModel.getInstance()));
     				break;
     			case "Dosifier":
-    				setModel(new DosifierAdapter(new DosifierModel()));
+    				DosifierSimulator simulator = new DosifierSimulator();
+    				DosifierModel dosifModel =new DosifierModel(simulator);
+    				simulator.setModel(dosifModel);
+    				setModel(new DosifierAdapter(dosifModel));
     				break;
     		}
     	}else{
