@@ -1,5 +1,6 @@
 <h1 style="text-align: center;">Contenido</h1>
 <p>&nbsp;</p>
+
 <p style="text-align: left;"><a href="#_Toc447898562">INTRODUCCION</a></p>
 <p style="padding-left: 30px; text-align: left;"><a href="#_Toc447898563">Prop&oacute;sito y alcance</a></p>
 <p style="padding-left: 30px; text-align: left;"><a href="#_Toc447898564">Prop&oacute;sito de las pr&aacute;cticas de SCM</a></p>
@@ -16,9 +17,10 @@
 <p style="text-align: left;"><a href="#_Toc447898575">CM DEL CODIGO FUENTE</a></p>
 <p style="padding-left: 30px; text-align: left;"><a href="#_Toc447898576">Norma de Etiquetado</a></p>
 <p style="padding-left: 30px; text-align: left;"><a href="#_Toc447898577">Esquema de ramas</a></p>
-<p style="padding-left: 30px; text-align: left;"><a href="#Merge">Estrategias de Combianci&oacute;n</a></p>
+<p style="padding-left: 30px; text-align: left;"><a href="#Merge">Estrategias de Combinaci&oacute;n</a></p>
 <p><span style="text-align: left; color: #0000ff;"><a href="#CONTROL DE ENTREGAS">CONTROL DE ENTREGAS </a></span></p>
 <p style="padding-left: 30px;"><a href="#Releases">Releases, entregas e instalaci&oacute;n</a></p>
+
 <h1><a name="_Toc447898562"></a>INTRODUCCION</h1>
 <h2 style="padding-left: 60px;"><a name="_Toc447898563"></a>Prop&oacute;sito y alcance</h2>
 <p>El objetivo de este documento es presentar la estrategia general para la Administraci&oacute;n de Configuraciones del Proyecto IngSoft-2016-SoftDuino.</p>
@@ -245,8 +247,9 @@
 <h4>Herramienta de Gesti&oacute;n de Cambio</h4>
 <p>Se utilizar&aacute; la secci&oacute;n "<em>Issues" </em>de GitHub para recibir pedidos de cambio, organizar mediante prioridades y aceptar o no el cambio requerido.</p>
 <h4>Mapa del proceso de gesti&oacute;n de cambio</h4>
-<p><img src="&lt;a href='http://postimg.org/image/mro249u17/' target='_blank'&gt;&lt;img src='http://s33.postimg.org/mro249u17/mapa_de_CR.jpg' border='0' alt=&quot;mapa de CR&quot; /&gt;&lt;/a&gt;" alt="" /></p>
-<p>&nbsp;</p>
+
+![](http://i.imgur.com/lJ1s3AA.jpg)
+
 <h4>Consideraciones</h4>
 <p>El "<em>IssueCoordinator" </em>ser&aacute; el encargado de determinar si el CR es duplicado de otro CR, en cuyo caso ser&aacute; etiquetado como duplicado en la herramienta.</p>
 <p>Si un CR ya fue discutido en la CCB, &eacute;ste ser&aacute; autom&aacute;ticamente rechazado. Un CR ser&aacute; rechazado despu&eacute;s de que los miembros CCB est&aacute;n de acuerdo.</p>
@@ -282,12 +285,20 @@
 </ul>
 <h2 style="padding-left: 60px;"><a name="_Toc447898577"></a>Esquema de ramas</h2>
 <p>Hay una rama principal (<em>master</em>) la cual contendr&aacute; las versiones definitivas a partir de la cual se crear&aacute;n ramas paralelas para el desarrollo del proyecto. Una vez implementado con &eacute;xito un cambio se fusionar&aacute; la rama de trabajo con la principal. Cualquier desarrollador puede trabajar en cualquier rama y de ser necesario un desarrollador puede crear ramas privadas para trabajar sin afectar el desarrollo principal de la aplicaci&oacute;n.</p>
+
+![](http://i.imgur.com/6CcTqaj.png)
+
 <p>&nbsp;</p>
 <h2 style="padding-left: 60px;"><a id="Merge"></a>Estrategias de combinaci&oacute;n</h2>
+
+![](http://i.imgur.com/NltFR2X.jpg)
+
 <p>Se debe realizar la combinaci&oacute;n solo cuando la funcionalidad est&eacute; lista para entregarse como release.</p>
 <h1>&nbsp;</h1>
 <h1><a id="CONTROL DE ENTREGAS"></a>CONTROL DE ENTREGAS</h1>
 <h2 style="padding-left: 60px;"><a id="Releases"></a>Releases, entregas e instalaci&oacute;n</h2>
+
+La entrega del release se hará mediante un CD con el instalador, manual de usuario y guía de ayuda para problemas.
 <p><br />Los archivos ser&aacute;n comprimidos en formato *.zip&nbsp; y enviados por email<br />a <a href="mailto:martinmiceli@gmail.com">martinmiceli@gmail.com</a>,&nbsp;<a href="mailto:noninojulian@gmail.com">noninojulian@gmail.com</a> <br />Los archivos a entregar son:<br />- Informe.<br />- Presentaci&oacute;n.<br />- Ejecutables (JARs) <br />- Direccion de acceso al repositorio.</p>
 <p>Para soporte e informes sobre problemas, podr&aacute; dirigirse a un link mediante el cual se seguir&aacute;n los informes recibidos por los usuarios:</p>
 <p><a href="https://github.com/castrosoft/IngSoft-2016-SoftDuino/issues">https://github.com/castrosoft/IngSoft-2016-SoftDuino/issues</a></p>
