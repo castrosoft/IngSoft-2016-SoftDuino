@@ -16,7 +16,6 @@ Integrantes
 
 
 
-### Release Notes - 
+### Release Notes - [Click Aqui](http://https://github.com/castrosoft/IngSoft-2016-SoftDuino/blob/master/docs/ReleaseNote.md)
 
-### Informe Final - 
-
+### Informe Final - [Click Aqui](http://https://github.com/castrosoft/IngSoft-2016-SoftDuino/blob/master/docs/InformeFinal-SoftDuino.docx)
