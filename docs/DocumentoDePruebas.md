@@ -2,37 +2,47 @@
 							DOCUMENTO DE PRUEBAS
 
 
-***PRUEBAS UNITARIAS***:
+***PRUEBAS UNITARIAS***
 -
 **TEDat** = TestEnvioDato	
+
+Verifica si el dato se ha enviado correctamente, mediante la comprobación de que el dato enviado fue almacenado en una variable en la clase del simulador.
 		
-**TEC** = TestEnvioCloro	
+**TEC** = TestEnvioCloro
 		
+
 **TEP** = TestEnvioPh	
+
 		
-**TEDiar** = TestEnvioDiaria	
+**TEDiar** = TestEnvioDiaria
+	
+Los tests de envío de funciones se realizan a través de verificar la variable de tipo de dato se corresponde con una "c" en el caso del cloro, con una "p" en el caso de ph y una "d" en el caso de diaria. Cada uno de los tests espera,mediante dormir el hilo, que el hardware simulado procese la información.
+
 		
 **TRCC** = TestRecepcionCantidadCloro
+
 			
 **TRCP** = TestRecepcionCantidadPh	
+
 		
 **TRCDiar** = TestRecepcionCantidadesDiaria			
 
+Estas pruebas verifican que ele estado final de dosificación de un producto, variables que se encuentran dentro del modelo, cuando el sistema simulado termina  el proceso se corresponda con los valores ingresados en la caja de texto o con los valores 10 de cloro, 7 de ph, 5 de alguicida y 3 de clarificante, para el caso de función diaria.
 
 
 
-***PRUEBAS DE SISTEMA***:
+***PRUEBAS DE SISTEMA***
 -
 Aclaraciones: La barra de progreso y las etiquetas están organizadas en grilla de 2 por 2 elementos, es decir que la barra de progreso en la posición (1,1) se corresponde con la etiqueta (1,1).
 
 ![](http://i.imgur.com/lM5p20r.jpg)
 
-**PRUEBA ENVIO DE DOSIS DE CLORO**
+**PRUEBA ENVÍO DE DOSIS DE CLORO**
 
 
-- DESCRIPCIÓN: Mediante la interfaz de usuario de la aplicacion se debera enviar al sistema dosificador la cantidad de cloro a dosificar y esperar la respuesta del mismo.
+- DESCRIPCIÓN: Mediante la interfaz de usuario de la aplicación se deberá enviar al sistema dosificador la cantidad de cloro a dosificar y esperar la respuesta del mismo.
 
-- PRECONDICIONES: Tener abierto la aplicacion y la conexion establecida con el hardware (o simulador).
+- PRECONDICIONES: Tener abierto la aplicación y la conexión establecida con el hardware (o simulador).
 
 - PROCEDIMIENTO: 
 
@@ -48,7 +58,7 @@ Aclaraciones: La barra de progreso y las etiquetas están organizadas en grilla 
 
 
 
-**PRUEBA ENVIO DE DOSIS DE PH**
+**PRUEBA ENVÍO DE DOSIS DE PH**
 
 
 - DESCRIPCIÓN: Mediante la interfaz de usuario de la aplicación deberá enviar al sistema dosificador la cantidad de PH a dosificar y esperar la respuesta del mismo.
@@ -69,14 +79,14 @@ Aclaraciones: La barra de progreso y las etiquetas están organizadas en grilla 
 
 **PRUEBA FUNCIÓN DIARIA**
 
-- DESCRIPCION: Mediante la interfaz grafica, la aplicacion debera enviar el comando de dosificacion diaria al sistema dosificador.
+- DESCRIPCION: Mediante la interfaz gráfica, la aplicación deberá enviar el comando de dosificación diaria al sistema dosificador.
 
 - PRECONDICIONES: Tener abierto la aplicación y la conexión establecida con el hardware (o simulador).
 
 
 - PROCEDIMIENTOS:
 
-	- Hacer click en boton "Diaria".
+	- Hacer click en botón "Diaria".
 
 
 
@@ -84,3 +94,8 @@ Aclaraciones: La barra de progreso y las etiquetas están organizadas en grilla 
 	 - Que la aplicación vaya mostrando la cantidad de medidas de químico suministrado en las etiquetas con los nombres de los quimicos. 
 	 - Las cantidades anteriormente mencionadas deben llegar a los numeros correspondientes a la confguracion de dosificacion diaria que esta grabada en el sistema dosificador (en este caso 10 de cloro, 7 de ph, 5 de alguicida y 3 de clarificante). 
 	- Las barras de progreso deben representar las cantidades de químicos suministrados (instante a instante se deben corresponder con su valor numérico).
+
+
+**Matriz de trazabilidad**
+
+![](http://i.imgur.com/9fmdVgJ.png)
